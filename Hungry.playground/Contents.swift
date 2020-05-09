@@ -2,7 +2,7 @@ import UIKit
 
 class Spoon {
     
-    let lock = NSLock()
+    private let lock = NSLock()
     
     func pickUp() {
         lock.lock()
@@ -26,8 +26,16 @@ class Developer {
     }
     
     func think() {
-        leftspoon.pickUp()
-        rightspoon.pickUp()
+        print("\(self.name) starts thinking")
+        if self.name == "developer4" {
+            rightspoon.pickUp()
+            leftspoon.pickUp()
+        } else {
+            leftspoon.pickUp()
+            rightspoon.pickUp()
+        }
+
+        print("\(self.name) stops thinking")
     }
     
     func eat() {
@@ -45,13 +53,8 @@ class Developer {
         }
     }
     
-//    func run() {
-//        think()
-//        eat()
-//    }
 }
 
-//var spoons: [Spoon] = []
 let spoon0 = Spoon()
 let spoon1 = Spoon()
 let spoon2 = Spoon()
@@ -70,6 +73,8 @@ developers.append(developer1)
 developers.append(developer2)
 developers.append(developer3)
 developers.append(developer4)
+
+//print(developers)
 
 DispatchQueue.concurrentPerform(iterations: 5) {
     developers[$0].run()
