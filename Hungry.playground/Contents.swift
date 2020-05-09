@@ -15,10 +15,12 @@ class Spoon {
 
 
 class Developer {
+    let name: String
     var leftspoon: Spoon
     var rightspoon: Spoon
     
-    init(leftspoon: Spoon, rightspoon: Spoon) {
+    init(name: String, leftspoon: Spoon, rightspoon: Spoon) {
+        self.name = name
         self.leftspoon = leftspoon
         self.rightspoon = rightspoon
     }
@@ -29,9 +31,11 @@ class Developer {
     }
     
     func eat() {
-        usleep(1000)
-        leftspoon.putDown()
+        print("\(self.name) starts eating")
+        usleep(1_000_000)
+        print("\(self.name) finished eating")
         rightspoon.putDown()
+        leftspoon.putDown()
     }
     
     func run() {
@@ -40,6 +44,11 @@ class Developer {
             eat()
         }
     }
+    
+//    func run() {
+//        think()
+//        eat()
+//    }
 }
 
 //var spoons: [Spoon] = []
@@ -50,11 +59,11 @@ let spoon3 = Spoon()
 let spoon4 = Spoon()
 
 var developers: [Developer] = []
-let developer0 = Developer(leftspoon: spoon0, rightspoon: spoon1)
-let developer1 = Developer(leftspoon: spoon1, rightspoon: spoon2)
-let developer2 = Developer(leftspoon: spoon2, rightspoon: spoon3)
-let developer3 = Developer(leftspoon: spoon3, rightspoon: spoon4)
-let developer4 = Developer(leftspoon: spoon4, rightspoon: spoon0)
+let developer0 = Developer(name: "developer0", leftspoon: spoon0, rightspoon: spoon1)
+let developer1 = Developer(name: "developer1", leftspoon: spoon1, rightspoon: spoon2)
+let developer2 = Developer(name: "developer2", leftspoon: spoon2, rightspoon: spoon3)
+let developer3 = Developer(name: "developer3", leftspoon: spoon3, rightspoon: spoon4)
+let developer4 = Developer(name: "developer4", leftspoon: spoon4, rightspoon: spoon0)
 
 developers.append(developer0)
 developers.append(developer1)
